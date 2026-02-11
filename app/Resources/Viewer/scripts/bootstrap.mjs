@@ -2,7 +2,6 @@ import discord from "./discord.mjs";
 import gui from "./gui.mjs";
 import state from "./state.mjs";
 import "./polyfills.mjs";
-import servers from "./servers.mjs";
 
 window.DISCORD = discord;
 
@@ -26,12 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	
 	state.onUsersRefreshed(users => {
 		gui.updateUserList(users);
-		servers.update()
 	});
 	
 	state.onChannelsRefreshed((channels, selected) => {
 		gui.updateChannelList(channels, selected, state.selectChannel);
-		servers.update()
 	});
 	
 	state.onMessagesRefreshed(messages => {
